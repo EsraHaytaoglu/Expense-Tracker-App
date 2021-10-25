@@ -1,7 +1,8 @@
 import React from "react";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu } from "antd";
 import { Route } from "react-router-dom";
 import SignUp from "./components/SignUp";
+import Login from "./components/Login";
 
 function App() {
   const { Header, Content, Footer } = Layout;
@@ -18,6 +19,7 @@ function App() {
       </Header>
       <Content style={{ padding: "50px 50px" }}>
         <Route path="/register" component={SignUp} />
+        <Route path="/login" component={Login} />
       </Content>
       <Footer style={{ textAlign: "center" }}>
         Harcama Takip ©2021 Esra Çebi

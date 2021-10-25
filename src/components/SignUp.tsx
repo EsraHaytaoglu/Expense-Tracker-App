@@ -30,7 +30,6 @@ function SignUp() {
     } catch (error) {
       console.log(error);
       showError((error as any).response.data.errorMessage)
-        
     }
   };
   return (

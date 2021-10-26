@@ -1,41 +1,38 @@
-import { Form, Input, Button, Result } from "antd";
-import showError from "../utils/showError";
-import api from "../utils/api";
-import { useHistory, useLocation } from "react-router-dom";
-import { LoginForm } from "../types/user";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../store/actions/userActions";
-import { AppState } from "../store";
+import { Form, Input, Result, Button } from "antd";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useLocation } from "react-router-dom";
+import { AppState } from "../store";
+import { login } from "../store/actions/userActions";
+import { LoginForm } from "../types/user";
+import showError from "../utils/showError";
 import showSuccess from "../utils/showSuccess";
 
 function Login() {
   const history = useHistory();
   const location = useLocation<{ newSignUp?: boolean }>();
   const dispatch = useDispatch();
-  
-  
 
-  const { data, loading, error} = useSelector((state: AppState ) => state.user)
+  const { data, loading, error } = useSelector((state: AppState) => state.user);
 
   const onFinish = (values: LoginForm) => {
     dispatch(login(values));
-  }
-  useEffect(() => {
-    error && showError(error);
-  }, [error])
+  };
 
   useEffect(() => {
-    data.username && showSuccess("You have successfully logged in!")
+    error && showError(error);
+  }, [error]);
+
+  useEffect(() => {
+    data.username && showSuccess("You have successfully logged in!");
   }, [data.username]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if(token) {
+    if (token) {
       history.push("/");
     }
   }, [data]);
-
 
   return (
     <Form
@@ -44,9 +41,9 @@ function Login() {
       wrapperCol={{ span: 16 }}
       initialValues={{ remember: true }}
       onFinish={onFinish}
-      autoComplete="off"
+      //   onFinishFailed={onFinishFailed}
     >
-      <h2>Login</h2>
+      <h2 style={{ textAlign: "center", marginBottom: 40 }}>Please login</h2>
       {location.state?.newSignUp && (
         <Result
           status="success"

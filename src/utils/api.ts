@@ -1,5 +1,12 @@
 import axios from "axios";
 
-export default  axios.create({
+export default () => {
+  const token = JSON.parse(localStorage.getItem("token")!);
+
+  return axios.create({
     baseURL: "https://expensetracker-be.herokuapp.com",
-})
+    headers: {
+      Authorization: token
+    },
+  });
+};

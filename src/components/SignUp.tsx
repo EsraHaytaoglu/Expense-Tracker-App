@@ -1,16 +1,15 @@
-import { Form, Input, Button, Space} from "antd";
+import { Form, Input, Button } from "antd";
 import { useHistory } from "react-router-dom";
+
 import api from "../utils/api";
 import showError from "../utils/showError";
-
-
-
 
 function SignUp() {
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
   };
+
   const validateMessages = {
     required: "${label} is required!",
     types: {
@@ -23,15 +22,17 @@ function SignUp() {
   };
 
   const history = useHistory();
+
   const onFinish = async (values: any) => {
     try {
-      await api.post("/users/register", values);
+      await api().post("/users/register", values);
       history.push("/login", { newSignUp: true });
     } catch (error) {
-      console.log(error);
-      showError((error as any).response.data.errorMessage)
+      console.log({ error });
+      showError((error as any).response.data.errorMessage);
     }
   };
+
   return (
     <Form
       {...layout}
@@ -39,14 +40,18 @@ function SignUp() {
       onFinish={onFinish}
       validateMessages={validateMessages}
     >
-        <h2>Register</h2>
+      <h2 style={{ textAlign: "center", marginBottom: 40 }}>
+        Register for an account
+      </h2>
       <Form.Item name="username" label="Username" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
       <Form.Item
         label="Password"
         name="password"
-        rules={[{ required: true, message: 'Please input your password!', min:4 }]}
+        rules={[
+          { required: true, message: "Please input your password!", min: 6 },
+        ]}
       >
         <Input.Password />
       </Form.Item>
@@ -57,10 +62,7 @@ function SignUp() {
       >
         <Input />
       </Form.Item>
-      <Form.Item 
-        name="full_name" 
-        label="Full Name"
-      >
+      <Form.Item name="full_name" label="Full Name">
         <Input />
       </Form.Item>
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>

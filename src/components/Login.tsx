@@ -34,7 +34,7 @@ function Login() {
     if(token) {
       history.push("/");
     }
-  }, [data])
+  }, [data]);
 
 
   return (

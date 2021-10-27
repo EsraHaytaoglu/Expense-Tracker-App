@@ -142,7 +142,7 @@ function Categories() {
         
         </Modal>
       </div>
-      <Table loading columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={data} rowKey="id" />
     </React.Fragment>
   );
 }

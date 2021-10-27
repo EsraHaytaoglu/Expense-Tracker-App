@@ -59,7 +59,7 @@ interface DELETE_START {
 }
 interface DELETE_SUCCESS {
     type: "DELETE_RECORD_SUCCESS";
-    payload: Record;
+    payload: Record['id'];
 
 }
 interface DELETE_ERROR {
@@ -67,7 +67,7 @@ interface DELETE_ERROR {
 }
 
 export type RecordAction = 
-|GET_START
+| GET_START
 | GET_SUCCESS
 | GET_ERROR
 | ADD_START

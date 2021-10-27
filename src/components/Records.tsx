@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../store";
 import { getCategories } from "../store/actions/categoryActions";
-import { addRecord, getRecords } from "../store/actions/recordActions";
+import { addRecord, deleteRecord, getRecords, updateRecord } from "../store/actions/recordActions";
 import { Category } from "../types/category";
 import { Mode } from "../types/general";
 import { Record, RecordForm } from "../types/records";
@@ -34,8 +34,8 @@ function Records() {
 
   const handleOk = () => {
     if (mode === "new")  dispatch(addRecord(form));
-    // else if (mode === "edit" && typeof updateId === 'number') dispatch(updateRecord(form, updateId));
-    // else if (mode === "delete" && typeof deleteId === "number") dispatch(deleteRecord(deleteId))
+    else if (mode === "edit" && typeof updateId === 'number') dispatch(updateRecord(form, updateId));
+    else if (mode === "delete" && typeof deleteId === "number") dispatch(deleteRecord(deleteId))
     setIsModalVisible(false);
     setMode("new");
     setForm(emptyForm);
@@ -93,12 +93,23 @@ function Records() {
     {
       title: "Action",
       key: "action",
-      render: (text: string, record: Record) => (
+      render: (text: string, record: Record) => {
+        const { title, amount } = record;
+        const category_id = record.category.id
+       return (
         <Space size="middle">
-          <EditOutlined onClick={() => {}} />
-          <DeleteOutlined onClick={() => {}} />
-        </Space>
-      ),
+        <EditOutlined onClick={() => {
+          showModal("edit");
+          setForm({title, amount, category_id});
+          setUpdateId(record.id);
+        }} />
+        <DeleteOutlined onClick={() => {
+            showModal("delete");
+            setDeleteId(record.id);
+        }} />
+      </Space>
+       )
+      },
     },
   ];
   const dispatch = useDispatch();
@@ -116,10 +127,10 @@ function Records() {
           style={{
             display: "flex",
             justifyContent: "flex-end",
-            marginBottom: 10,
+            margin: "30px",
           }}
         >
-          <Button type="primary" >
+          <Button type="primary" onClick={() => showModal("new")}>
             New Record
           </Button>
         </div>
@@ -155,13 +166,10 @@ function Records() {
                   <Select.Option value={0} disabled >Select a category</Select.Option>
                   {
                       categories.map(category => {
-                          return <Select.Option value="expense" key={category.id}>Expense</Select.Option>
+                          return <Select.Option value={category.id} key={category.id}>{category.name}</Select.Option>
                       })
                   }
                 </Select>
-              </Form.Item>
-              <Form.Item label="Color">
-                ;
               </Form.Item>
             </Form>
           ) : mode === "delete" ? <> Are you sure?

@@ -100,7 +100,7 @@ function Categories() {
   return (
     <React.Fragment>
       <div>
-        <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 10}}>
+        <div style={{ display: "flex", justifyContent: "flex-end", margin: "30px"}}>
         <Button type="primary" onClick={() => showModal("new")}>
           New Category
         </Button>

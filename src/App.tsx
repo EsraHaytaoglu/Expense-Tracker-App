@@ -1,5 +1,5 @@
 
-import { Layout, Menu } from "antd";
+import { Layout } from "antd";
 import { Route } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";

@@ -31,7 +31,7 @@ function AppHeader() {
             <Menu.Item key="/logout" ><Link to="/logout"> Log Out </Link> </Menu.Item>   
           </React.Fragment> : (
              loading ? null : (
-              <Menu.Item key="/login" > Log in </Menu.Item>
+              <Menu.Item key="/login" ><Link to="/login"> Log in</Link> </Menu.Item>
              )
           )}
         </Menu>

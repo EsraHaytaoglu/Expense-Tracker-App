@@ -6,8 +6,9 @@ import { AppState } from "../store";
 import { addCategory, deleteCategory, getCategories, updateCategory } from "../store/actions/categoryActions";
 import { Category } from "../types/category";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { Mode } from "../types/general";
 
-type Mode = "new" | "edit" | "delete";
+
 interface CategoryForm {
   name: string;
   type: "income" | "expense";
@@ -94,6 +95,8 @@ function Categories() {
   useEffect(() => {
     dispatch(getCategories());
   }, []);
+
+  
   return (
     <React.Fragment>
       <div>

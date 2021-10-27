@@ -7,6 +7,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Categories from "./components/Categories";
 import AppHeader from "./components/AppHeader";
 import Logout from "./components/Logout";
+import Records from "./components/Records";
 
 function App() {
   const { Header, Content, Footer } = Layout;
@@ -17,6 +18,7 @@ function App() {
         <Route path="/register" component={SignUp} />
         <Route path="/login" component={Login} />
         <PrivateRoute path="/categories" component={Categories} />
+        <PrivateRoute path="/records" component={Records} />
         <Route path="/logout" component={Logout}
          />
       </Content>

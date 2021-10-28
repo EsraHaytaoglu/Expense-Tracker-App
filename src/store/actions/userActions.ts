@@ -12,15 +12,15 @@ export const login = (creds: LoginForm) => async (dispatch: UserDispatch) => {
     }
   };
 
-export const isLoggedIn = ()=> async (dispatch: UserDispatch) => {
-  dispatch({ type: "IS_LOGGED_IN_START"});
-  try {
-    const response = await api().post<User>("/user/is_logged_in");
-    dispatch({ type: "IS_LOGGED_IN_SUCCESS", payload:response.data });
-  } catch {
-    dispatch({ type: "IS_LOGGED_IN_ERROR"});
-  }
-}
+  export const isLoggedIn = () => async (dispatch: UserDispatch) => {
+    dispatch({ type: "IS_LOGGED_IN_START" });
+    try {
+      const response = await api().post<User>("/users/is_logged_in");
+      dispatch({ type: "IS_LOGGED_IN_SUCCESS", payload: response.data });
+    } catch {
+      dispatch({ type: "IS_LOGGED_IN_ERROR" });
+    }
+  };
 export const logout = ()=>  (dispatch: UserDispatch) => {
   localStorage.removeItem("token")
   dispatch({ type: "LOGOUT"});

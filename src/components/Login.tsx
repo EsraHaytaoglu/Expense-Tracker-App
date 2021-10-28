@@ -41,9 +41,10 @@ function Login() {
       wrapperCol={{ span: 16 }}
       initialValues={{ remember: true }}
       onFinish={onFinish}
+      style={{ marginTop: "5%", marginRight: "20%"}}
       //   onFinishFailed={onFinishFailed}
     >
-      <h2 style={{ textAlign: "center", marginBottom: 40 }}>Please login</h2>
+      <h2 style={{ textAlign: "center" }}>Please login</h2>
       {location.state?.newSignUp && (
         <Result
           status="success"

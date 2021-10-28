@@ -39,9 +39,10 @@ function SignUp() {
       name="nest-messages"
       onFinish={onFinish}
       validateMessages={validateMessages}
+      style={{ marginTop: "5%", marginRight: "20%"}}
     >
       <h2 style={{ textAlign: "center", marginBottom: 40 }}>
-        Register for an account
+        Register 
       </h2>
       <Form.Item name="username" label="Username" rules={[{ required: true }]}>
         <Input />

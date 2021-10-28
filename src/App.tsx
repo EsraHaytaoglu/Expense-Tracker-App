@@ -22,8 +22,8 @@ function App() {
         <Route path="/logout" component={Logout}
          />
       </Content>
-      <Footer style={{ textAlign: "center" }}>
-        Harcama Takip ©2021 Esra Çebi
+      <Footer style={{ textAlign: "center", marginBottom: "-50%" }}>
+        Harcama Takip Uygulaması ©2021 Esra Çebi
       </Footer>
     </Layout>
   );

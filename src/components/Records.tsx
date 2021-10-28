@@ -178,7 +178,7 @@ function Records() {
         
         </Modal>
       </div>
-      <Table loading={loading} dataSource={data} columns={columns} />
+      <Table loading={loading} dataSource={data} columns={columns}  rowKey="id" />
     </React.Fragment>
   );
 }

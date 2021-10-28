@@ -1,10 +1,9 @@
+Whether you want an expense tracker app that easily lists all your expense, one that separetes the your expenses or incomes  by categories one that edits , records deletes and adds records , there’s an app out there for you.
 ## Libraries and Packages
-
 React
 TypeScript
 Redux
 Ant Design
-
 ## Topics
 
 - API Introduction
@@ -15,3 +14,6 @@ Ant Design
 - Signup Page
 - Login Page
 - Category Management Page
+
+## API 
+[Documentation](https://documenter.getpostman.com/view/11347698/TzRPiote) made of React Dersleri

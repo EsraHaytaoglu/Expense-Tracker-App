@@ -15,5 +15,3 @@ Ant Design
 - Login Page
 - Category Management Page
 
-## API 
-[Documentation](https://documenter.getpostman.com/view/11347698/TzRPiote) made of React Dersleri
